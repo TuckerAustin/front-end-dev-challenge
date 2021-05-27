@@ -1,0 +1,23 @@
+{
+  "name": "front-end-dev-challenge",
+  "version": "1.0.0",
+  "description": "vernier dev challenge",
+  "main": "challenge-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild ./challenge-app.js --bundle --sourcemap --outdir=dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuckerAustin/front-end-dev-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuckerAustin/front-end-dev-challenge/issues"
+  },
+  "homepage": "https://github.com/TuckerAustin/front-end-dev-challenge#readme",
+  "dependencies": {
+    "lit": "*"
+  }
+}
