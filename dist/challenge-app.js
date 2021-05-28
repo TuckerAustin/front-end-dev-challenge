@@ -6037,8 +6037,9 @@
       font-size: 100%;
     }
     table,
+    tbody,
       td {
-        border: 1px solid #333;
+        border: 2px solid black;
       }
 
       thead,
@@ -6053,17 +6054,21 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2">${this.dataSetName}</th>
+                <th colspan="3">${this.dataSetName}</th>
             </tr>
             <tr>
+                <th></th>
                 ${this.columnLabels.map((label) => T`
                 <th>${label}</th>
                 `)}
             </tr>
         </thead>
         <tbody>
-            ${this.data.map((row) => T`
+            ${this.data.map((row, index) => T`
             <tr>
+                <td>
+                    ${index + 1}
+                </td>
                 <td>
                     ${row.x}
                 </td>
@@ -6096,10 +6101,13 @@
       .challenge {
         display: flex;
         justify-content: space-between;
+        margin: 2px 8px;
+        width: calc(100% - 32px);
       }
 
       challenge-chart {
-        width: 85%;
+        width: 75%;
+        margin: 2px 8px;
       }
       
   `;
@@ -6121,12 +6129,12 @@
       const size = e4?.target.value ?? "small";
       this.currentDataSet = await this.challengeDataService.getDataSet(size);
       this.columnLabels = [this.currentDataSet.xColumn.name, this.currentDataSet.yColumn.name];
-      const xvalues = this.currentDataSet.xColumn.values;
-      const yvalues = this.currentDataSet.yColumn.values;
-      const valueslength = Math.max(xvalues.length, yvalues.length);
+      const xValues = this.currentDataSet.xColumn.values;
+      const yValues = this.currentDataSet.yColumn.values;
+      const valuesLength = Math.max(xValues.length, yValues.length);
       this.data = [];
-      for (let i4 = 0; i4 < valueslength; ++i4) {
-        this.data.push({ x: xvalues[i4], y: yvalues[i4] });
+      for (let i4 = 0; i4 < valuesLength; ++i4) {
+        this.data.push({ x: xValues[i4], y: yValues[i4] });
       }
       this.requestUpdate();
     }

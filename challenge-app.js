@@ -20,10 +20,13 @@ class ChallengeApp extends LitElement {
       .challenge {
         display: flex;
         justify-content: space-between;
+        margin: 2px 8px;
+        width: calc(100% - 32px);
       }
 
       challenge-chart {
-        width: 85%;
+        width: 75%;
+        margin: 2px 8px;
       }
       
   `}
@@ -47,12 +50,12 @@ class ChallengeApp extends LitElement {
         const size = e?.target.value ?? 'small';
         this.currentDataSet = await this.challengeDataService.getDataSet(size);
         this.columnLabels = [this.currentDataSet.xColumn.name, this.currentDataSet.yColumn.name];
-        const xvalues = this.currentDataSet.xColumn.values;
-        const yvalues = this.currentDataSet.yColumn.values;
-        const valueslength = Math.max(xvalues.length, yvalues.length);
-        this.data = []
-        for (let i = 0; i < valueslength; ++i) {
-            this.data.push({ x: xvalues[i], y: yvalues[i] });
+        const xValues = this.currentDataSet.xColumn.values;
+        const yValues = this.currentDataSet.yColumn.values;
+        const valuesLength = Math.max(xValues.length, yValues.length);
+        this.data = [];
+        for (let i = 0; i < valuesLength; ++i) {
+            this.data.push({ x: xValues[i], y: yValues[i] });
         }
         this.requestUpdate();
     }

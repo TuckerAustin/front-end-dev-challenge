@@ -16,8 +16,9 @@ class ChallengeTable extends LitElement {
       font-size: 100%;
     }
     table,
+    tbody,
       td {
-        border: 1px solid #333;
+        border: 2px solid black;
       }
 
       thead,
@@ -32,17 +33,21 @@ class ChallengeTable extends LitElement {
     <table>
         <thead>
             <tr>
-                <th colspan="2">${this.dataSetName}</th>
+                <th colspan="3">${this.dataSetName}</th>
             </tr>
             <tr>
+                <th></th>
                 ${this.columnLabels.map(label => html`
                 <th>${label}</th>
                 `)}
             </tr>
         </thead>
         <tbody>
-            ${this.data.map(row => html`
+            ${this.data.map((row, index) => html`
             <tr>
+                <td>
+                    ${index + 1}
+                </td>
                 <td>
                     ${row.x}
                 </td>
